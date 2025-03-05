@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Example Stage') {
             steps {
-                // display the environment variables values : BUILD_VERSION and TARGET_ENV
+                // display the environment variables in the console:
                 echo "Building version ${env.BUILD_VERSION} for ${env.TARGET_ENV}"
                 // Your build steps here
             }
