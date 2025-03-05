@@ -5,12 +5,19 @@ pipeline{
     tools {
         // Install the Maven tool with the name 'M3'
         maven 'maven-tool'
+        git 'git-tool'
     }
     stages {
-        stage('Example Stage') {
+        stage('maven tool') {
             steps {
                 // Run the Maven tool with the name 'M3'
                 sh 'mvn --version'
+            }
+        }
+        stage('git tool') {
+            steps {
+                // Run the Maven tool with the name 'M3'
+                sh 'git --version'
             }
         }
     }
