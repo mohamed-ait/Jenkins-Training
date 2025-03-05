@@ -31,7 +31,9 @@ pipeline {
 
                 echo "Choice: ${params.CHOICE}"
 
-                echo "Password: ${params.PASSWORD}"
+                wrap([$class: 'MaskPasswordsBuildWrapper']) {
+                    sh "echo 'Using password: ${params.PASSWORD}'"  //  The password is masked in logs
+                }
             }
         }
     }
