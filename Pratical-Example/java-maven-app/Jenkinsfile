@@ -19,6 +19,8 @@ pipeline {
         stage('Build') {
             steps {
                 sh 'cd $WORKSPACE/Pratical-Example/java-maven-app'
+                sh 'pwd'
+                sh 'ls'
                 sh 'mvn clean install'
             }
         }
