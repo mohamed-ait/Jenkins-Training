@@ -29,13 +29,22 @@ pipeline {
 
         stage('Generate Artifact') {
             steps {
-                sh 'mvn package'
+                sh ''
+            }
+            steps {
+                sh '''
+                   cd $WORKSPACE/Pratical-Example/java-maven-app
+                   mvn package
+                '''
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                sh '''
+                   cd $WORKSPACE/Pratical-Example/java-maven-app
+                   docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG} .
+                '''
             }
         }
 
