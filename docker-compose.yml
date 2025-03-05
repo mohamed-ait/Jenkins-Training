@@ -1,14 +1,19 @@
-version: '3'
+version: '3.8'
 
 services:
   jenkins:
-    container_name: jenkins
     image: jenkins/jenkins:lts
+    container_name: jenkins
     restart: unless-stopped
+    privileged: true
+    user: root
     ports:
       - "8080:8080"
+      - "50000:50000"
     volumes:
-      - jenkins-volume:/var/jenkins_home
+      - jenkins_volume:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock  # Allows Jenkins to control Docker
+    entrypoint: ["/bin/sh", "-c", "apt-get update && apt-get install -y docker.io && exec /usr/local/bin/jenkins.sh"]
 
 volumes:
-  jenkins-volume:
+  jenkins_volume:
