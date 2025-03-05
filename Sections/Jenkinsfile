@@ -1,0 +1,23 @@
+pipeline {
+    // agent section : where to run the pipeline
+    agent any
+    // stages section : contains all the stages of the pipeline
+    stages { 
+        stage('Build') {
+            steps {
+                echo 'This is Build stage'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'This is Test stage'
+            }
+        }
+    }
+    // Post section : always, changed, failure, success, unstable, fixed, aborted
+    post { 
+        always { 
+            echo 'I will always say Hello again!'
+        }
+    }
+}
