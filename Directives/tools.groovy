@@ -17,7 +17,7 @@ pipeline{
         stage('ant tool') {
             steps {
                 // Run the Maven tool with the name 'M3'
-                sh 'ant --version'
+                sh 'ant -version'
             }
         }
     }
