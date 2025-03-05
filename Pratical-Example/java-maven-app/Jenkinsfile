@@ -29,9 +29,6 @@ pipeline {
 
         stage('Generate Artifact') {
             steps {
-                sh ''
-            }
-            steps {
                 sh '''
                    cd $WORKSPACE/Pratical-Example/java-maven-app
                    mvn package
@@ -45,7 +42,7 @@ pipeline {
                    cd $WORKSPACE/Pratical-Example/java-maven-app
                    docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE}:${DOCKER_TAG} .
                 '''
-            }
+                  }
         }
 
         stage('Login to Docker Registry') {
